@@ -8,12 +8,14 @@ namespace Demo
 {
     internal class SinhVien
     {
+        public int MaSV;
         public string Name;
         public string Email;
         public double Diem;
 
-        public SinhVien(string name, string email, double diem)
+        public SinhVien(int MaSV, string name, string email, double diem)
         {
+            this.MaSV = MaSV;
             Name = name;
             Email = email;
             Diem = diem;
@@ -48,5 +50,13 @@ namespace Demo
             //return outPut;
         }
 
+        public void Show()
+        {
+            Console.WriteLine("MaSV :" + this.MaSV);
+            Console.WriteLine("Ten :" + this.Name);
+            Console.WriteLine("Email :" + this.Email);
+            Console.WriteLine("Diem :" + this.Diem);
+            Console.WriteLine("Hoc Luc :" + this.HocLuc());
+        }
     }
 }
