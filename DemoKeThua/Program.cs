@@ -10,9 +10,14 @@ namespace DemoKeThua
     {
         static void Main(string[] args)
         {
-            KeToan kt = new KeToan("Nguyen van A", "Ha Noi", "anv@gmail.com", "0123456789", "Tai chinh", 15000000);
 
-            kt.Show();
+            SinhVienIT svIT = new SinhVienIT("Nguyen Van A", "IT", 8, 8 ,10);
+
+            SinhVienBiz svBiz = new SinhVienBiz("Nguyen Van A", "IT", 5, 1);
+
+            svIT.xuat();
+
+            svBiz.xuat();
 
             Console.ReadLine();
         }
