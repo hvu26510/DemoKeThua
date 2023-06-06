@@ -14,14 +14,28 @@ namespace Demo
             ArrayList listSV = new ArrayList();
             AddDemoData(ref listSV);
 
-            foreach (SinhVien item in FindByKhoangDiem(listSV, 5,7))
+
+            // var outPutSV = listSV.Cast<SinhVien>().Where(sv => sv.HocLuc() == "Trung Binh");
+
+            //Console.WriteLine("Nhap vao hoc luc:");
+            //string hl = Console.ReadLine();
+
+
+            //ArrayList listOut = FindByHocLuc(listSV, hl);
+            //foreach(SinhVien sv in listOut)
+            //{
+            //    sv.Show();
+            //}
+
+            Console.WriteLine("Nhap vao ma so:");
+            int ms = int.Parse(Console.ReadLine());
+
+            FindAndUpDate(ref listSV, ms);
+
+            foreach(SinhVien sv in listSV)
             {
-                item.Show();
+                sv.Show();
             }
-
-          
-
-        
 
             Console.ReadLine();
         }
@@ -46,6 +60,7 @@ namespace Demo
         static ArrayList FindByKhoangDiem(ArrayList list, double min, double max)
         {
             ArrayList listOutPut = new ArrayList();
+
             foreach (SinhVien sv in list)
             {
                 if (sv.Diem>= min && sv.Diem<= max)
@@ -54,9 +69,52 @@ namespace Demo
                 }
             }
             return listOutPut;
+        }
+
+        static ArrayList FindByHocLuc(ArrayList list, string hl)
+        {
+            ArrayList listOutPut = new ArrayList(); //Tao arrayList de tra ve
+
+            //vong lap qua tung phan tu de kiem tra dieu kien
+            foreach(SinhVien sv in list)
+            {
+                if (sv.HocLuc() == hl)
+                {
+                    listOutPut.Add(sv);
+                }
+            }
+
+            return listOutPut;
+        }
+
+        static SinhVien FindByMaSo(ArrayList list, int maSV)
+        {
+            foreach(SinhVien sv in list)
+            {
+                if (sv.MaSV == maSV)
+                {
+                    return sv;
+                }
+            }
+            return null;
 
         }
 
+        static void FindAndUpDate(ref ArrayList list, int maSV)
+        {
+            var sv = list.Cast<SinhVien>().Where(v=> v.MaSV == maSV).FirstOrDefault();
+            int x = list.IndexOf(sv); // tim vi tri cua sv
+
+            Console.WriteLine("Nhap ten moi");
+            sv.Name = Console.ReadLine();
+            Console.WriteLine("Nhap Diem moi");
+            sv.Diem = double.Parse(Console.ReadLine());
+            Console.WriteLine("Nhap Email moi");
+            sv.Email = Console.ReadLine();
+
+
+            list[x] = sv;
+        }
 
 
 

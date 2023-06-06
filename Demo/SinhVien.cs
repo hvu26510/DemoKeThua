@@ -30,21 +30,21 @@ namespace Demo
             //string outPut = "";
             if(Diem < 5) 
             {
-                return "Yeu";
+                return "Y";
             }else if(Diem < 6.5)
             {
-                return "Trung Binh";
+                return "TB";
             }
             else if (Diem < 7.5)
             {
-                return "Trung Binh";
+                return "K";
             }else if (Diem < 9)
             {
-                return "Gioi";
+                return "G";
             }
             else
             {
-                return "Xuat Sac";
+                return "XS";
             }
 
             //return outPut;
