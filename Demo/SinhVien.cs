@@ -59,4 +59,9 @@ namespace Demo
             Console.WriteLine("Hoc Luc :" + this.HocLuc());
         }
     }
+
+    interface IDraw
+    {
+        void Show();
+    }
 }
