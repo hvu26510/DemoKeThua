@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using System.Data.SqlTypes;
 
 namespace Demo
 {
@@ -13,6 +14,8 @@ namespace Demo
         {
             ArrayList listSV = new ArrayList();
             AddDemoData(ref listSV);
+
+            FindAndShowByDiem(listSV, 5, 7);
 
 
             // var outPutSV = listSV.Cast<SinhVien>().Where(sv => sv.HocLuc() == "Trung Binh");
@@ -27,15 +30,17 @@ namespace Demo
             //    sv.Show();
             //}
 
-            Console.WriteLine("Nhap vao ma so:");
-            int ms = int.Parse(Console.ReadLine());
+            //Console.WriteLine("Nhap vao ma so:");
+            //int ms = int.Parse(Console.ReadLine());
 
-            FindAndUpDate(ref listSV, ms);
+            //FindAndUpDate(ref listSV, ms);
 
-            foreach(SinhVien sv in listSV)
-            {
-                sv.Show();
-            }
+            //foreach(SinhVien sv in listSV)
+            //{
+            //    sv.Show();
+            //}
+
+            
 
             Console.ReadLine();
         }
@@ -115,6 +120,19 @@ namespace Demo
 
             list[x] = sv;
         }
+
+        static void FindAndShowByDiem(ArrayList list, double min, double max)
+        {
+            var listOut = list.Cast<SinhVien>().Where(sv => sv.Diem >= min && sv.Diem <= max);
+            foreach (SinhVien sv in listOut)
+            {
+
+                sv.Show();
+
+            }
+        }
+
+
 
 
 
